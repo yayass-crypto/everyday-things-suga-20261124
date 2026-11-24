@@ -26,7 +26,13 @@ def main() -> None:
     out = Path("/output/entry.txt")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(ENTRY, encoding="utf-8")
-    print(out.read_text(encoding="utf-8"), end="")
+    text = out.read_text(encoding="utf-8")
+    print(text, end="")
+    print(
+        f"[entry: {len(text)} chars, "
+        f"{len(text.encode('utf-8'))} bytes, "
+        f"{text.count(chr(10))} lines]"
+    )
 
 
 if __name__ == "__main__":
